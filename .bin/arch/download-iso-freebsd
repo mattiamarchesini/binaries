@@ -1,0 +1,8 @@
+#!/bin/bash
+SITE=https://download.freebsd.org/ftp/releases/amd64/amd64/ISO-IMAGES
+DIR=$(xdg-user-dir DOWNLOAD)/iso
+
+wget https://www.freebsd.org/where.html -O $DIR/where.html
+VERSION=$(cat $DIR/where.html | grep amd64 | grep href | head -n 1 | cut -d "/" -f 9)
+rm $DIR/where.html
+wget $SITE/$VERSION/FreeBSD-"$VERSION"-RELEASE-amd64-dvd1.iso -O $DIR/freebsd.iso

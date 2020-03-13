@@ -1,0 +1,7 @@
+#!/bin/sh
+
+ git clone https://aur.archlinux.org/"$1".git ~/$1
+ CURRENT_DIR=$(pwd)
+ cd ~/$1
+ makepkg -si --noconfirm && rm -rf ~/$1
+ cd $CURRENT_DIR

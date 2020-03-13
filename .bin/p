@@ -1,0 +1,6 @@
+#!/bin/sh
+
+current_dir=$(pwd)
+cd ~/.password-store
+pass -c "$(find -name "*.gpg" | sed "s/\.\///g;s/\.gpg//g" | fzf)"
+cd "$current_dir"

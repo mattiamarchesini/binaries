@@ -1,0 +1,7 @@
+#!/bin/bash
+SITE=https://archlinux.beccacervello.it/archlinux/iso/latest
+DIR=$(xdg-user-dir DOWNLOAD)/iso
+
+wget $SITE/md5sums.txt -O $DIR/md5sums.txt
+wget $SITE/$(cat $DIR/md5sums.txt | grep archlinux-[0-9] | cut -f3 -d " ") -O $DIR/archlinux.iso
+rm $DIR/md5sums.txt

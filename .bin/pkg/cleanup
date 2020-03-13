@@ -1,0 +1,3 @@
+#!/bin/sh
+
+sudo pacman -Rns $(pacman -Qtdq) ; sudo paccache --remove --keep 1 ; sudo paccache --remove --uninstalled --keep 0
