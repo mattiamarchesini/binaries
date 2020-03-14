@@ -1,6 +1,4 @@
 #!/bin/sh
 
-current_dir=$(pwd)
-cd ~/.password-store
-pass -c "$(find -name "*.gpg" | sed "s/\.\///g;s/\.gpg//g" | fzf)"
-cd "$current_dir"
+escaped_home=$(echo "$HOME/.password-store/" | sed "s/\//\\\\\//g")
+pass -c "$(find ~/.password-store/ -name *.gpg | sed "s/^$escaped_home//g;s/\.gpg$//g" | fzf)"
