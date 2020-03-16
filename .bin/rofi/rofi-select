@@ -1,3 +1,0 @@
-#!/bin/bash
-
-$(ls "$HOME"/.bin/rofi | grep rofi-script | sed "s/-rofi-script//g" | rofi -dmenu -p "rofi scripts")-rofi-script

@@ -1,3 +1,0 @@
-#!/bin/sh
-
-lsblk | grep part | tr -d "├─└" | tr -s " " | tr " " "\t" | cut -f1,4,7

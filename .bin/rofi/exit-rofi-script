@@ -1,4 +1,0 @@
-#!/bin/sh
-
-A=$(echo -e "shutdown\nreboot\nexit current section" | rofi -dmenu -p "actions" | sed "s/exit current section/i3-msg exit/g") 2>/dev/null
-$A
