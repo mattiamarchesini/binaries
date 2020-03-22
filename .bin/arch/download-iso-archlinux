@@ -1,7 +1,9 @@
-#!/bin/bash
-SITE=https://archlinux.beccacervello.it/archlinux/iso/latest
-DIR=$(xdg-user-dir DOWNLOAD)/iso
+#!/bin/sh
 
-wget $SITE/md5sums.txt -O $DIR/md5sums.txt
-wget $SITE/$(cat $DIR/md5sums.txt | grep archlinux-[0-9] | cut -f3 -d " ") -O $DIR/archlinux.iso
-rm $DIR/md5sums.txt
+site=https://archlinux.beccacervello.it/archlinux/iso/latest
+dir=$DOWNLOADS/iso
+
+clear
+printf "downloading latest iso\n\n"
+
+wget $site/$(curl -s $site/md5sums.txt 2>&1 | grep "archlinux-[0-9]" | cut -f3 -d " ") -O $dir/archlinux.iso

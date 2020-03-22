@@ -1,8 +1,11 @@
-#!/bin/bash
-SITE=https://download.freebsd.org/ftp/releases/amd64/amd64/ISO-IMAGES
-DIR=$(xdg-user-dir DOWNLOAD)/iso
+#!/bin/sh
 
-wget https://www.freebsd.org/where.html -O $DIR/where.html
-VERSION=$(cat $DIR/where.html | grep amd64 | grep href | head -n 1 | cut -d "/" -f 9)
-rm $DIR/where.html
-wget $SITE/$VERSION/FreeBSD-"$VERSION"-RELEASE-amd64-dvd1.iso -O $DIR/freebsd.iso
+site=https://download.freebsd.org/ftp/releases/amd64/amd64/ISO-IMAGES
+dir=$DOWNLOADS/iso
+
+clear
+printf "downloading latest iso\n\n"
+
+version=$(curl -s https://www.freebsd.org/where.html 2>&1 | grep 'href.*amd64' | head -n 1 | sed "s/^.*[^0-9]\([0-9]\+\.[0-9]\+\).*/\1/g")
+
+wget $site/$version/FreeBSD-"$version"-RELEASE-amd64-dvd1.iso -O $dir/freebsd.iso
